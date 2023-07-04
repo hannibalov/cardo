@@ -1,10 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {signInWithGoogle} from './firebase/providers';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import {signInWithGoogle} from './firebase/providers'
 
 function App() {
-
   const handleLoginWithGoogle = async () => {
     await signInWithGoogle()
   }
@@ -15,18 +14,15 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <button className="btn-signup" onClick={handleLoginWithGoogle}>Sign up</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <button className="btn-signup" onClick={handleLoginWithGoogle}>
+          Sign up
+        </button>
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
