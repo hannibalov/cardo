@@ -31,6 +31,7 @@ export const UpsertBook = () => {
     event.preventDefault()
     const performUpsert = async (url: string) => {
       await upsertBookDB({id: action.bookId, title, author, imageUrl: url})
+      setAction({type: ActionTypeEnum.NONE})
     }
     if (file) await uploadFile(file, performUpsert)
     else await performUpsert(url)
@@ -45,8 +46,14 @@ export const UpsertBook = () => {
       <button className="btn-back" onClick={back}>
         Back
       </button>
-      <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
-      <input type="text" name="author" value={author} onChange={(e) => setAuthor(e.target.value)}></input>
+      <label>
+        Book title:
+        <input type="text" name="name" value={title} onChange={(e) => setTitle(e.target.value)} />
+      </label>
+      <label>
+        Author name:
+        <input type="text" name="author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+      </label>
       <input type="file" onChange={handleFileSelected} accept="/image/*" />
       <input type="submit" value={action.type === ActionTypeEnum.ADD ? 'Add' : 'Update'} />
     </form>
