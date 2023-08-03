@@ -1,13 +1,21 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {signInWithGoogle} from './firebase/providers'
+import {Dashboard} from './components/Dashboard'
+import {signInWithGoogle, isLoggedIn} from './firebase/providers'
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = React.useState(isLoggedIn())
   const handleLoginWithGoogle = async () => {
+    console.log('handleLoginWithGoogle')
     await signInWithGoogle()
+    console.log('handleLoginWithGoogle done', isLoggedIn())
+    setIsSignedIn(isLoggedIn())
   }
-  return (
+
+  console.log('isSignedIn', isLoggedIn())
+
+  return isSignedIn ? <Dashboard/>: (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
