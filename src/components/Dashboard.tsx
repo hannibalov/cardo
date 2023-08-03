@@ -1,12 +1,16 @@
-import {logoutFirebase, isLoggedIn} from '../firebase/providers'
+import {logoutFirebase} from '../firebase/providers'
+import {UpsertBook} from './UpsertBook'
 
 export const Dashboard = () => {
-    const logout = async () => {
-        await logoutFirebase()
-        console.log('handleLoginWithGoogle done', isLoggedIn())
-    }
-    return (
-        <button className="btn-logout" onClick={logout}>
-          Sign out
-        </button>)
+  const logout = async () => {
+    await logoutFirebase()
+  }
+  return (
+    <>
+      <button className="btn-logout" onClick={logout}>
+        Sign out
+      </button>
+      <UpsertBook />
+    </>
+  )
 }

@@ -13,7 +13,7 @@ export const Login = () => {
   }
 
   const handleSignUp = async (event: React.FormEvent) => {
-    event.preventDefault() 
+    event.preventDefault()
     await signUpWithEmailAndPassword(email, password)
   }
 
@@ -22,8 +22,8 @@ export const Login = () => {
   }
 
   const handleFormSubmit = async (event: React.FormEvent) => {
-    event.preventDefault() 
-    await handleLogin() 
+    event.preventDefault()
+    await handleLogin()
   }
 
   return (
