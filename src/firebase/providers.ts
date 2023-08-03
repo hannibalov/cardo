@@ -3,6 +3,8 @@ import {firebaseAuth} from './config'
 
 const googleProvider = new GoogleAuthProvider()
 
+export const isLoggedIn = () => firebaseAuth.currentUser !== null
+
 export const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(firebaseAuth, googleProvider)
