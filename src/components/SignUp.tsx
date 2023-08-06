@@ -26,7 +26,7 @@ export const SignUpForm = () => {
       <form onSubmit={handleOnSubmit}>
         <h1>Create Account</h1>
         <div className="social-container" onClick={signInWithGoogle}>
-          <a href="/" className="social">
+          <a href="/#" className="social">
             <i className="fab fa-google-plus-g" />
           </a>
         </div>
