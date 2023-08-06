@@ -1,69 +1,42 @@
-import React from 'react'
-import {signInWithGoogle, signInWithEmailAndPassword, signUpWithEmailAndPassword} from '../firebase/providers'
-import './Login.css'
-
-import GoogleLogo from '../assets/google_logo.svg'
+import React, {useState} from 'react'
+import '../styles.css'
+import {SignInForm} from './SignIn'
+import {SignUpForm} from './SignUp'
 
 export const Login = () => {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-
-  const handleLogin = async () => {
-    await signInWithEmailAndPassword(email, password)
+  const [type, setType] = useState('signIn')
+  const handleOnClick = (text: string) => {
+    if (text !== type) {
+      setType(text)
+      return
+    }
   }
-
-  const handleSignUp = async (event: React.FormEvent) => {
-    event.preventDefault()
-    await signUpWithEmailAndPassword(email, password)
-  }
-
-  const handleGoogleLogin = async () => {
-    await signInWithGoogle()
-  }
-
-  const handleFormSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
-    await handleLogin()
-  }
-
+  const containerClass = 'container ' + (type === 'signUp' ? 'right-panel-active' : '')
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          data-testid="email-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <div className="App">
+      <h2>Sign in/up Form</h2>
+      <div className={containerClass} id="container">
+        <SignUpForm />
+        <SignInForm />
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button className="ghost" id="signIn" onClick={() => handleOnClick('signIn')}>
+                Sign In
+              </button>
+            </div>
+            <div className="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button className="ghost " id="signUp" onClick={() => handleOnClick('signUp')}>
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          data-testid="password-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <button type="submit" data-testid="login-button">
-          Login
-        </button>
-        <button onClick={handleSignUp} data-testid="signup-link">
-          Sign Up
-        </button>
-      </div>
-      <div>
-        <button onClick={handleGoogleLogin} data-testid="google-login-button">
-          <span>
-            <img src={GoogleLogo} alt="Google Logo" width="24" height="24" />
-          </span>
-          Continue with Google
-        </button>
-      </div>
-    </form>
+    </div>
   )
 }
