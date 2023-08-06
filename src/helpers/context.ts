@@ -24,6 +24,7 @@ export enum ActionTypeEnum {
   REMOVE,
   UPDATE,
   LIST,
+  REFRESH,
   NONE,
 }
 

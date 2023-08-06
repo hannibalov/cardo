@@ -1,6 +1,6 @@
 import {Book} from '../data/book'
 import {firestore} from './config'
-import {addDoc, collection, getDocs, getDoc, doc, setDoc} from 'firebase/firestore'
+import {addDoc, collection, getDocs, getDoc, doc, setDoc, deleteDoc} from 'firebase/firestore'
 
 export const upsertBook = async (book: Book) => {
   if (!book.id) {
@@ -16,6 +16,9 @@ export const upsertBook = async (book: Book) => {
 export const getBook = async (id: string) => {
   const booksRef = doc(firestore, 'books', id)
   return (await getDoc(booksRef)).data()
+}
+export const removeBook = async (id: string) => {
+  await deleteDoc(doc(firestore, 'books', id))
 }
 
 export const getBooks = async () => {
