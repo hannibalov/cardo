@@ -27,13 +27,13 @@ export const BooksGrid = () => {
       <button className="btn-logout" onClick={back}>
         Back
       </button>
-      <ul>
+      <div className="grid">
         {books.map((book) => (
           <div onClick={() => edit(book.id)}>
             <BookItem key={book.id} {...book} />
           </div>
         ))}
-      </ul>
+      </div>
     </>
   )
 }

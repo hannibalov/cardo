@@ -111,6 +111,50 @@ input {
   height: 100%;
   transition: all 0.6s ease-in-out;
 }
+/* Grid container */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Three columns */
+  gap: 20px;
+  padding: 20px;
+  overflow: auto;
+  max-height: 100%;
+}
+
+/* Individual book item */
+.book {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%; /* Set a fixed height for consistent book item size */
+  position: relative; /* Required for absolute positioning of text */
+}
+
+.book-image {
+  max-width: 100%;
+  max-height: 50%; /* Set a max height for the image */
+  object-fit: contain; /* Scale down while maintaining aspect ratio */
+}
+
+.book-details {
+  flex-grow: 1; /* Allow details to expand within the flex container */
+  display: flex;
+  justify-content: flex-end; /* Anchor to the bottom */
+  align-items: flex-end; /* Anchor to the bottom */
+  position: absolute; /* Position at the bottom */
+  width: 80%; /* Make details span the full width */
+  bottom: 0; /* Stick to the bottom of the book component */
+}
+
+.book-text {
+  background-color: rgba(255, 255, 255, 0.9); /* Add a background for better readability */
+  padding: 5px; /* Add some padding for spacing */
+  width: 100%; /* Text spans the full width */
+}
 
 .sign-in-container {
   left: 0;
