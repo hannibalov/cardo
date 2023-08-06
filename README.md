@@ -4,7 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you should run:
+
+## `npm install`
+
+Installs all the dependencies of the project
 
 ### `npm start`
 
@@ -21,9 +25,6 @@ Users can login/signup using either email/password or their Google credentials. 
 
 ## Data and Backend
 Users can add/list/edit books through the UI. The information ends up in the Firestore Database, and the uploaded images in the Firebase Storage bucket. Meaning the backend has been implemented through Firebase. This is great for prototyping, but obviously in a real project this would need to be reworked developing a custom backend and choosing the cloud provider that would best serve the needs
-
-## UX
-The UX is completely barebones, no effects or UI design has been applied. The effort was focused on making the project functional in a real environment
 
 ## Testing
 Unfortunately there was no time to develop testing either
