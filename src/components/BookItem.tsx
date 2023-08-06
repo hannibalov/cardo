@@ -2,7 +2,7 @@ import {Book} from '../data/book'
 
 export const BookItem = (book: Book) => {
   return (
-    <div className="book-item">
+    <div className="book">
       <img
         src={
           book.imageUrl ||
@@ -13,8 +13,10 @@ export const BookItem = (book: Book) => {
         width={250}
       />
       <div className="book-details">
-        <p className="book-title">Title: {book.title}</p>
-        <p className="book-author">Author: {book.author}</p>
+        <div className="book-text">
+          <h3>Title: {book.title}</h3>
+          <p className="book-author">Author: {book.author}</p>
+        </div>
       </div>
     </div>
   )
