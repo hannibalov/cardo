@@ -15,19 +15,19 @@ export const BooksGrid = () => {
     fetchData()
   }, [])
   const {setAction} = useContext(ActionContext)
-  const back = async () => {
-    setAction({type: ActionTypeEnum.NONE})
+  const addBook = async () => {
+    setAction({type: ActionTypeEnum.ADD})
   }
   return (
-    <>
-      <button className="btn" onClick={back}>
-        Back
-      </button>
+    <div className="grid-container">
       <div className="grid">
         {books.map((book) => (
           <BookItem key={book.id} {...book} />
         ))}
       </div>
-    </>
+      <button className="add-book-button" onClick={addBook}>
+        Add book
+      </button>
+    </div>
   )
 }

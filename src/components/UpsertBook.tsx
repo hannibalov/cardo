@@ -25,13 +25,13 @@ export const UpsertBook = () => {
   }, [action.bookId])
 
   const back = async () => {
-    setAction({type: ActionTypeEnum.NONE})
+    setAction({type: ActionTypeEnum.LIST})
   }
   const upsertBook = async (event: React.SyntheticEvent) => {
     event.preventDefault()
     const performUpsert = async (url: string) => {
       await upsertBookDB({id: action.bookId, title, author, imageUrl: url})
-      setAction({type: ActionTypeEnum.NONE})
+      setAction({type: ActionTypeEnum.LIST})
     }
     if (file) await uploadFile(file, performUpsert)
     else await performUpsert(url)
