@@ -42,20 +42,49 @@ export const UpsertBook = () => {
   }
 
   return (
-    <form onSubmit={upsertBook}>
-      <button className="btn-back" onClick={back}>
-        Back
-      </button>
-      <label>
-        Book title:
-        <input type="text" name="name" value={title} onChange={(e) => setTitle(e.target.value)} />
-      </label>
-      <label>
-        Author name:
-        <input type="text" name="author" value={author} onChange={(e) => setAuthor(e.target.value)} />
-      </label>
-      <input type="file" onChange={handleFileSelected} accept="/image/*" />
-      <input type="submit" value={action.type === ActionTypeEnum.ADD ? 'Add' : 'Update'} />
-    </form>
+    <>
+      <div className="add-book-button-container">
+        <button className="add-book-button" onClick={back}>
+          Back
+        </button>
+      </div>
+      <form onSubmit={upsertBook} className="book">
+        <div className="input-container">
+          <label>
+            Book title:
+            <input
+              type="text"
+              name="name"
+              className="input-field"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label>
+            Author name:
+            <input
+              type="text"
+              name="author"
+              className="input-field"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="input-container">
+          <label>
+            Select an image:
+            <input type="file" onChange={handleFileSelected} accept="/image/*" className="input-field" />
+          </label>
+        </div>
+        <input
+          type="submit"
+          className="button"
+          value={action.type === ActionTypeEnum.ADD ? 'Add' : 'Update'}
+        />
+      </form>
+    </>
   )
 }

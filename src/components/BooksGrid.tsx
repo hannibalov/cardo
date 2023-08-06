@@ -19,15 +19,19 @@ export const BooksGrid = () => {
     setAction({type: ActionTypeEnum.ADD})
   }
   return (
-    <div className="grid-container">
-      <div className="grid">
-        {books.map((book) => (
-          <BookItem key={book.id} {...book} />
-        ))}
+    <>
+      <div className="grid-container">
+        <div className="grid">
+          {books.map((book) => (
+            <BookItem key={book.id} {...book} />
+          ))}
+        </div>
       </div>
-      <button className="add-book-button" onClick={addBook}>
-        Add book
-      </button>
-    </div>
+      <div className="add-book-button-container">
+        <button className="add-book-button" onClick={addBook}>
+          Add book
+        </button>
+      </div>
+    </>
   )
 }
