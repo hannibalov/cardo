@@ -18,20 +18,14 @@ export const BooksGrid = () => {
   const back = async () => {
     setAction({type: ActionTypeEnum.NONE})
   }
-  const edit = async (id: string | undefined) => {
-    if (!id) return
-    setAction({type: ActionTypeEnum.UPDATE, bookId: id})
-  }
   return (
     <>
-      <button className="btn-logout" onClick={back}>
+      <button className="btn" onClick={back}>
         Back
       </button>
       <div className="grid">
         {books.map((book) => (
-          <div onClick={() => edit(book.id)}>
-            <BookItem key={book.id} {...book} />
-          </div>
+          <BookItem key={book.id} {...book} />
         ))}
       </div>
     </>

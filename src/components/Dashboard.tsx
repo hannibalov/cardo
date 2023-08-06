@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {logoutFirebase} from '../firebase/providers'
 import {BooksGrid} from './BooksGrid'
 import {ActionContext, ActionTypeEnum} from '../helpers/context'
@@ -6,6 +6,12 @@ import {UpsertBook} from './UpsertBook'
 
 export const Dashboard = () => {
   const [action, setAction] = React.useState({type: ActionTypeEnum.NONE})
+
+  useEffect(() => {
+    if (action.type === ActionTypeEnum.REFRESH) {
+      setAction({type: ActionTypeEnum.LIST})
+    }
+  }, [action])
 
   const logout = async () => {
     await logoutFirebase()

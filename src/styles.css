@@ -110,8 +110,7 @@ input {
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
-}
-/* Grid container */
+} /* Grid container */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Three columns */
@@ -131,7 +130,34 @@ input {
   flex-direction: column;
   padding: 10px;
   height: 100%; /* Set a fixed height for consistent book item size */
-  position: relative; /* Required for absolute positioning of text */
+  position: relative; /* Required for positioning of icons */
+}
+
+.book-icons {
+  display: none; /* Initially hide the icons */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  gap: 5px;
+}
+
+.book:hover .book-icons {
+  display: flex; /* Show icons when hovering over the Book component */
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .book-image {
